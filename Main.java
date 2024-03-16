@@ -7,38 +7,39 @@ public class Main {
     public static void main(String[] args) {
 
         List<int[]> testCases = new ArrayList<>();
-        // Caso simples
-        int[] testCase1 = { 0, 200, 400, 600, 800 };
+        List<Integer> d = new ArrayList<>();
+        
+        int[] testCase1 =  {0, 200, 400, 600, 800, 1000};;
         testCases.add(testCase1);
 
-        // Caso com pontos de parada próximos
-        int[] testCase2 = { 0, 100, 150, 250, 350, 400, 500 };
+        int[] testCase2 = {0, 100, 200, 300, 400, 500, 600, 700, 800};
         testCases.add(testCase2);
 
-        // Caso com pontos de parada mais distantes
-        int[] testCase3 = { 0, 400, 800, 1200, 1600 };
+        int[] testCase3 = {0, 500, 1000, 1500};
         testCases.add(testCase3);
 
-        // Caso com pontos de parada esparsos
-        int[] testCase4 = { 0, 100, 500, 800, 1100, 1500, 1800 };
+        int[] testCase4 = {0, 200, 400, 600, 800, 1000, 1200};
         testCases.add(testCase4);
 
-        // Caso com ponto de parada no final da trilha
-        int[] testCase5 = { 0, 200, 400, 600, 800, 1000 };
-        testCases.add(testCase5);
+        d.add(200 );
+        d.add(100  );
+        d.add(500  );
+        d.add(400  );
 
-        int maxDistancePerDay = 300;
 
         RallySolver solver = new RallySolver();
         int j = 0;
-        for (int[] i : testCases) {
+        for (int i = 0; i < testCases.size(); i++ ) {
 
-            List<StopPoint> selectedStops = solver.solveRally(i, maxDistancePerDay);
+            List<StopPoint> selectedStops = solver.solveRally(testCases.get(i), d.get(i));
             System.out.println("Caso: "+j);
             System.out.println("\n==============================");
+            System.out.println("Chegada L = " + testCases.get(i)[testCases.get(i).length-1]+
+                                "\nDistancia D = "+d.get(i)+
+                                "\nQuantidade de Pontos: "+ (testCases.get(i).length-1));
             for (StopPoint stop : selectedStops) {
                 
-                System.out.println("Ponto de parada na posição: " + stop.position);
+                System.out.println("Ponto de parada na posição: " + stop.position + " Km: "+testCases.get(i)[stop.position]);
             }
             System.out.println("==============================\n");
             j++;
