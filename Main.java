@@ -28,21 +28,25 @@ public class Main {
 
 
         RallySolver solver = new RallySolver();
-        int j = 0;
         for (int i = 0; i < testCases.size(); i++ ) {
+            long inicio = System.nanoTime();
+
 
             List<StopPoint> selectedStops = solver.solveRally(testCases.get(i), d.get(i));
-            System.out.println("Caso: "+j);
+            long fim = System.nanoTime();
+
+            System.out.println("Caso: "+i);
             System.out.println("\n==============================");
             System.out.println("Chegada L = " + testCases.get(i)[testCases.get(i).length-1]+
                                 "\nDistancia D = "+d.get(i)+
-                                "\nQuantidade de Pontos: "+ (testCases.get(i).length-1));
+                                "\nQuantidade de Pontos: "+ (testCases.get(i).length-1)+
+                                "\nTempo de execução em nanossegundos: " + (fim - inicio));
             for (StopPoint stop : selectedStops) {
                 
                 System.out.println("Ponto de parada na posição: " + stop.position + " Km: "+testCases.get(i)[stop.position]);
             }
             System.out.println("==============================\n");
-            j++;
+           
         }
     }
 }
