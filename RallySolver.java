@@ -1,13 +1,16 @@
 package Tarefa;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
 public class RallySolver {
     public List<StopPoint> solveRally(int[] stopDistances, int maxDistancePerDay) {
         List<StopPoint> stoppingPoints= new ArrayList<StopPoint>();
+        Arrays.sort(stopDistances);
         int currentPoint = 0;
+        
 
         stoppingPoints.add(new StopPoint(currentPoint, stopDistances[0]));
 
